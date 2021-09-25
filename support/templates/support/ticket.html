@@ -1,0 +1,21 @@
+{% extends 'support/index.html' %}
+{% block title %} Here it is {% endblock %}
+{% block content %}
+<!--{% for ticket in tickets %}-->
+<!--<a href="{{ ticket.get_absolute_url }}"></a>-->
+<!--{% endfor %}-->
+{% for ticket in tickets %}
+{{ ticket.title }}
+Created: {{ ticket.created }} by {{ ticket.author }}
+<details style="margin-left:0%">
+    <summary><a>Learn More</a></summary>
+    <h4><p>{{ ticket.title }}</p>
+<p>Author: {{ ticket.author }}</p>
+<p>Created at: {{ ticket.created }}</p>
+<p>Status: {{ ticket.status }}</p>
+<p>Main: {{ ticket.text }}</p></h4>
+<p><a href="{{ ticket.get_absolute_url }}">Link to detailed page</a></p>
+</details><br>
+{% endfor %}
+<!--{% include 'support/paginator.html' with page=ticket %}-->
+{% endblock %}

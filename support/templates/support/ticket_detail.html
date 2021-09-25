@@ -1,0 +1,24 @@
+{% block content %}
+<h2><center>Ticket Number: {{ ticket.pk }}</center>
+<h3><p>Title: {{ ticket.title }}</p>
+<p><h3>Author: {{ ticket.author }}</p>
+<p><h4>Main: {{ ticket.text }}</p></h3>
+<p>Created at: {{ ticket.created }}</p>
+<p>Status: {{ ticket.status }}</p>
+
+    {% for item in ticket.comments.all %}
+    <center><h2>Comment main id {{ item.id }}:</h2></center><p><p></p></p>
+    <p>Commentators name: {{ item.name_comment }} </p>
+    <p> Position: {{ item.position_comment }}</p>
+    <h4><p>Main: {{ item.text_comment }}</p></h4>
+    <p>Created at: {{ item.created_comment }}</p>
+    {% endfor %}
+    <h2>Add a new comment</h2>
+    <form action="" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Add comment"></p>
+    </form>
+    <a href="{% url 'support:ticket_list' %}">Go to the ticket list</a>
+    <p><a href="{% url 'support:main' %}">Go to the main page</a></p>
+{% endblock %}

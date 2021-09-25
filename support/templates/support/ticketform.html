@@ -1,0 +1,9 @@
+{% extends 'support/index.html' %}
+{% block title %} Hello {% endblock %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <input type="submit" value="OK">
+</form>
+{% endblock %}
